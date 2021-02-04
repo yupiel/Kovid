@@ -1,4 +1,4 @@
-package kovid
+package de.yupiel.kovid
 
 import kotlin.test.Test
 import kotlin.test.assertNotNull

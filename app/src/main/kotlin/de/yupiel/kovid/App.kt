@@ -1,4 +1,4 @@
-package kovid
+package de.yupiel.kovid
 
 class App {
     val greeting: String
