@@ -6,6 +6,10 @@ plugins {
     application
 }
 
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions.jvmTarget = "1.8"
+}
+
 repositories {
     // Use JCenter for resolving dependencies.
     jcenter()
@@ -19,13 +23,20 @@ dependencies {
     // This dependency is used by the application.
     implementation("com.google.guava:guava:29.0-jre")
 
-    // Use the Kotlin test library.
-    testImplementation("org.jetbrains.kotlin:kotlin-test")
-    // Use the Kotlin JUnit integration.
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.7.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
+
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.0")
 }
 
 application {
     // Define the main class for the application.
     mainClass.set("de.yupiel.kovid.AppKt")
+}
+
+tasks.test {
+    useJUnitPlatform()
+    testLogging {
+        events("passed", "skipped", "failed")
+    }
 }

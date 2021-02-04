@@ -1,6 +1,9 @@
 package de.yupiel.kovid
 
-import kotlin.test.*
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.api.Assertions.*
+import java.lang.NullPointerException
 
 //These Tests don't serve a real purpose in this software and are more to showcase specific characteristics of the language
 class NullSafety {
@@ -21,10 +24,10 @@ class NullSafety {
         val testingClass: NullSafetyTestClass? = NullSafetyTestClass()
         assertNotNull(testingClass!!.test)      //Converts the NullSafetyTestClass? into a non-nullable NullSafetyTestClass
     }
-    @Test(expected = NullPointerException::class)
+    @Test
     fun doubleExclamationMarkOperatorShouldThrowException() {
         val testingClass: NullSafetyTestClass? = null
-        testingClass!!.test
+        assertThrows<NullPointerException> { testingClass!!.test }
     }
 
     @Test
