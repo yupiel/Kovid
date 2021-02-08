@@ -7,6 +7,7 @@ plugins {
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    // Select the target JVM version for compiling
     kotlinOptions.jvmTarget = "15"
 }
 
@@ -23,9 +24,10 @@ dependencies {
     // This dependency is used by the application.
     implementation("com.google.guava:guava:29.0-jre")
 
-    testImplementation("org.junit.jupiter:junit-jupiter:5.7.0")
+    // Dependency used only by tests for JUnit imports
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
 
+    // Dependency only used during runtime of tests
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.0")
 }
 
@@ -34,8 +36,11 @@ application {
     mainClass.set("de.yupiel.kovid.AppKt")
 }
 
+// Declare test task
 tasks.test {
+    // Enables usage of the JUnit testing framework for tests
     useJUnitPlatform()
+    // Enables logging for specific events during testing
     testLogging {
         events("passed", "skipped", "failed")
     }

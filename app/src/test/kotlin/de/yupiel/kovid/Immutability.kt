@@ -18,7 +18,7 @@ class Immutability {
         val test = DataClass("Test")
         val actual = `Determine new Test Value`(test)       //This works since the value parameter in the data class is a var
                                                                 //it is not possible to reassign the val itself
-        assertEquals(DataClass("New Value"), actual)
+        assertEquals(DataClass("New Value").value, actual)
     }
     fun `Determine new Test Value`(input: DataClass): String{
         input.value = "New Value"
