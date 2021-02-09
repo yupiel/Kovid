@@ -72,3 +72,6 @@ gradle-app.setting
 
 # Cache of project
 .gradletasknamecache
+
+# output of CSV writings etc
+output/
